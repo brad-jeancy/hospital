@@ -3,210 +3,1108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hospitalia | Superior Medical Attention</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Hospitalia - Medical Care</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        .bg-hospitalia-light { background-color: #f0f9ff; } /* Light Blue */
-        .text-hospitalia-teal { color: #0d9488; } /* Teal */
-        .bg-hospitalia-teal { background-color: #0d9488; }
+        :root {
+            --primary: #1a73e8;
+            --primary-dark: #0d47a1;
+            --secondary: #34a853;
+            --accent: #f28c82;
+            --light: #f8f9fa;
+            --gray: #5f6368;
+            --dark: #202124;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #fff;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .section-heading {
+            font-size: 2.25rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section-description {
+            font-size: 1.125rem;
+            color: var(--gray);
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            background: linear-gradient(135deg, #f0f7ff 0%, #e6f2ff 100%);
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+        }
+        
+        /* Departments Section */
+        .departments {
+            padding: 100px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .departments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .department-card {
+            background: white;
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .department-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .department-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .department-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Medical Team Section */
+        .team {
+            padding: 100px 0;
+            background-color: #f8fafc;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .team-member {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+        
+        .member-img {
+            height: 280px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .member-info {
+            padding: 25px;
+        }
+        
+        .member-info h3 {
+            font-size: 1.375rem;
+            margin-bottom: 5px;
+        }
+        
+        .member-specialty {
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        /* Resources Section */
+        .resources {
+            padding: 100px 0;
+        }
+        
+        .resources-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .resource-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+        
+        .step-number {
+            background-color: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+        
+        .step h3 {
+            font-size: 1.375rem;
+            margin-bottom: 8px;
+        }
+        
+        /* FAQ Section */
+        .faq {
+            padding: 100px 0;
+            background-color: #f8fafc;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .faq-question {
+            padding: 20px 25px;
+            font-weight: 600;
+            font-size: 1.125rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-answer.active {
+            padding: 0 25px 25px;
+            max-height: 500px;
+        }
+        
+        .faq-toggle {
+            color: var(--primary);
+            font-size: 1.25rem;
+            transition: transform 0.3s ease;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 100px 0;
+        }
+        
+        .testimonials-slider {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonials-container {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .testimonial-card {
+            flex: 0 0 100%;
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            margin: 0 15px;
+        }
+        
+        .patient-quote {
+            font-size: 1.125rem;
+            font-style: italic;
+            color: var(--dark);
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+        
+        .patient-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .patient-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .patient-name {
+            font-weight: 600;
+            font-size: 1.125rem;
+        }
+        
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 40px;
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ddd;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .dot.active {
+            background-color: var(--primary);
+        }
+        
+        /* Blog Section */
+        .blog {
+            padding: 100px 0;
+            background-color: #f8fafc;
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .blog-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .blog-img {
+            height: 220px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .blog-content {
+            padding: 25px;
+        }
+        
+        .blog-date {
+            font-size: 0.875rem;
+            color: var(--gray);
+            margin-bottom: 10px;
+        }
+        
+        .blog-content h3 {
+            font-size: 1.375rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 80px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-contact h3 {
+            font-size: 1.375rem;
+            margin-bottom: 20px;
+        }
+        
+        .contact-item {
+            margin-bottom: 25px;
+        }
+        
+        .contact-item h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            color: #e0e0e0;
+        }
+        
+        .contact-item p {
+            color: #b0b0b0;
+        }
+        
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .contact-item a:hover {
+            color: var(--primary);
+        }
+        
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+        }
+        
+        .link-group h4 {
+            font-size: 1.125rem;
+            margin-bottom: 20px;
+        }
+        
+        .link-group ul {
+            list-style: none;
+        }
+        
+        .link-group li {
+            margin-bottom: 12px;
+        }
+        
+        .link-group a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .link-group a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            color: #b0b0b0;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .section-heading {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .nav-links li {
+                margin: 0 0 20px 0;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.125rem;
+            }
+            
+            .departments, .team, .resources, .faq, .testimonials, .blog {
+                padding: 80px 0;
+            }
+            
+            .testimonial-card {
+                padding: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+            
+            .section-heading {
+                font-size: 1.75rem;
+            }
+            
+            .btn {
+                padding: 12px 28px;
+            }
+            
+            .department-card, .blog-content, .member-info {
+                padding: 25px 20px;
+            }
+            
+            .step {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .departments-grid, .team-grid, .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
-<body class="text-slate-700 bg-white">
-
-    <header class="fixed w-full bg-white/90 backdrop-blur-md shadow-sm z-50">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-hospitalia-teal tracking-tight">HOSPITALIA</div>
-            <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
-                <a href="#departments" class="hover:text-hospitalia-teal transition">Departments</a>
-                <a href="#team" class="hover:text-hospitalia-teal transition">Team</a>
-                <a href="#resources" class="hover:text-hospitalia-teal transition">Resources</a>
-                <a href="#faqs" class="hover:text-hospitalia-teal transition">FAQs</a>
-                <a href="#stories" class="hover:text-hospitalia-teal transition">Stories</a>
-                <a href="#news" class="hover:text-hospitalia-teal transition">News</a>
-                <a href="#contact" class="hover:text-hospitalia-teal transition">Contact</a>
-            </div>
-        </nav>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">Hospita<span>lia</span></a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#departments">Departments</a></li>
+                <li><a href="#team">Medical Team</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#faq">FAQs</a></li>
+                <li><a href="#testimonials">Patient Stories</a></li>
+                <li><a href="#blog">Latest News</a></li>
+                <li><a href="#contact" class="btn">Contact</a></li>
+            </ul>
+        </div>
     </header>
 
-    <section class="relative h-screen flex items-center pt-16 bg-hospitalia-light overflow-hidden">
-        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <h1 class="text-5xl md:text-6xl font-bold text-slate-900 leading-tight mb-6">
-                    Every patient receives <span class="text-hospitalia-teal">superior attention</span>
-                </h1>
-                <p class="text-lg text-slate-600 mb-8 max-w-lg">
-                    Schedule a consultation with our skilled physicians and obtain top-notch health treatment.
-                </p>
-                <a href="#contact" class="bg-hospitalia-teal text-white px-8 py-4 rounded-lg font-semibold shadow-lg hover:bg-teal-700 transition">Book Appointment</a>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Every patient receives superior attention</h1>
+            <p>Schedule a consultation with our skilled physicians and obtain top-notch health treatment.</p>
+            <a href="#contact" class="btn">Book an Appointment</a>
+        </div>
+    </section>
+
+    <!-- Departments Section -->
+    <section class="departments" id="departments">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Our departments</span>
+                <h2 class="section-heading">Specialties that meets your needs</h2>
+                <p class="section-description">Experience comprehensive, personalized care from our expert medical team. With advanced diagnostics and tailored treatments.</p>
+                <a href="#team" class="btn">Meet our doctors</a>
             </div>
-            <div class="hidden md:block relative">
-                <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=800" alt="Modern Clinic" class="rounded-2xl shadow-2xl">
+            
+            <div class="departments-grid">
+                <div class="department-card">
+                    <div class="department-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Cardiology</h3>
+                    <p>Comprehensive heart care with state-of-the-art diagnostics and treatment plans tailored to your needs.</p>
+                </div>
+                
+                <div class="department-card">
+                    <div class="department-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Neurology</h3>
+                    <p>Expert care for disorders of the nervous system, using the latest advancements in neurological medicine.</p>
+                </div>
+                
+                <div class="department-card">
+                    <div class="department-icon">
+                        <i class="fas fa-bone"></i>
+                    </div>
+                    <h3>Orthopedics</h3>
+                    <p>Specialized care for bones, joints, and muscles to help you regain mobility and live pain-free.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="departments" class="py-24 container mx-auto px-6">
-        <div class="text-center mb-16">
-            <span class="text-hospitalia-teal font-bold tracking-widest uppercase text-sm">Our departments</span>
-            <h2 class="text-4xl font-bold text-slate-900 mt-2 mb-4">Specialties that meets your needs</h2>
-            <p class="text-slate-600 max-w-2xl mx-auto">Experience comprehensive, personalized care from our expert medical team. With advanced diagnostics and tailored treatments.</p>
-        </div>
-        <div class="grid md:grid-cols-3 gap-8 mb-12">
-            <div class="p-8 border border-slate-100 rounded-xl hover:shadow-xl transition text-center">
-                <div class="text-4xl mb-4">🫀</div>
-                <h3 class="font-bold text-xl mb-2">Cardiology</h3>
-                <p class="text-sm text-slate-500">Advanced heart care and diagnostics.</p>
+    <!-- Medical Team Section -->
+    <section class="team" id="team">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-heading">Our best medical team</h2>
+                <p class="section-description">Our experienced doctors are dedicated to providing exceptional care.</p>
             </div>
-            <div class="p-8 border border-slate-100 rounded-xl hover:shadow-xl transition text-center">
-                <div class="text-4xl mb-4">🧠</div>
-                <h3 class="font-bold text-xl mb-2">Neurology</h3>
-                <p class="text-sm text-slate-500">Specialized treatment for the nervous system.</p>
-            </div>
-            <div class="p-8 border border-slate-100 rounded-xl hover:shadow-xl transition text-center">
-                <div class="text-4xl mb-4">🦷</div>
-                <h3 class="font-bold text-xl mb-2">Dental Care</h3>
-                <p class="text-sm text-slate-500">Complete oral health and hygiene.</p>
-            </div>
-        </div>
-        <div class="text-center">
-            <a href="#team" class="border-2 border-hospitalia-teal text-hospitalia-teal px-8 py-3 rounded-lg font-bold hover:bg-hospitalia-teal hover:text-white transition">Meet our doctors</a>
-        </div>
-    </section>
-
-    <section id="team" class="py-24 bg-slate-50">
-        <div class="container mx-auto px-6">
-            <div class="mb-16">
-                <h2 class="text-4xl font-bold text-slate-900 mb-4">Our best medical team</h2>
-                <p class="text-slate-600">Our experienced doctors are dedicated to providing exceptional care.</p>
-            </div>
-            <div class="grid md:grid-cols-4 gap-8">
-                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
-                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=400" alt="Doctor" class="w-full h-64 object-cover">
-                    <div class="p-6">
-                        <h4 class="font-bold text-lg">Dr. Sarah Jenkins</h4>
-                        <p class="text-hospitalia-teal text-sm">Chief of Medicine</p>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Dr. Sarah Johnson" class="member-img">
+                    <div class="member-info">
+                        <h3>Dr. Sarah Johnson</h3>
+                        <p class="member-specialty">Chief of Cardiology</p>
+                        <p>With over 15 years of experience, Dr. Johnson specializes in advanced cardiac care.</p>
                     </div>
                 </div>
-                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
-                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=400" alt="Doctor" class="w-full h-64 object-cover">
-                    <div class="p-6">
-                        <h4 class="font-bold text-lg">Dr. Marcus Chen</h4>
-                        <p class="text-hospitalia-teal text-sm">Lead Surgeon</p>
+                
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Dr. Michael Chen" class="member-img">
+                    <div class="member-info">
+                        <h3>Dr. Michael Chen</h3>
+                        <p class="member-specialty">Neurology Specialist</p>
+                        <p>Dr. Chen is renowned for his innovative approaches to treating neurological disorders.</p>
                     </div>
                 </div>
-                </div>
-        </div>
-    </section>
-
-    <section id="resources" class="py-24 container mx-auto px-6">
-        <div class="flex flex-col md:flex-row items-center gap-16">
-            <div class="md:w-1/2">
-                <span class="text-hospitalia-teal font-bold tracking-widest uppercase text-sm">Patient resources</span>
-                <h2 class="text-4xl font-bold text-slate-900 mt-2 mb-6">See how it works</h2>
-                <p class="text-slate-600 mb-6 text-lg">We provide resources to help you better understand your condition and make informed decisions.</p>
-                <ul class="space-y-4">
-                    <li class="flex items-center space-x-3">
-                        <span class="bg-teal-100 text-teal-700 p-1 rounded-full text-xs">✔</span>
-                        <span>Easy online appointment booking</span>
-                    </li>
-                    <li class="flex items-center space-x-3">
-                        <span class="bg-teal-100 text-teal-700 p-1 rounded-full text-xs">✔</span>
-                        <span>Digital health records access</span>
-                    </li>
-                </ul>
-            </div>
-            <div class="md:w-1/2">
-                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800" alt="Resources" class="rounded-2xl">
-            </div>
-        </div>
-    </section>
-
-    <section id="faqs" class="py-24 bg-hospitalia-light">
-        <div class="container mx-auto px-6 max-w-4xl">
-            <div class="text-center mb-12">
-                <span class="text-hospitalia-teal font-bold tracking-widest uppercase text-sm">FAQs</span>
-                <h2 class="text-4xl font-bold text-slate-900 mt-2 mb-4">Frequently asked questions</h2>
-                <p class="text-slate-600">We understand that navigating healthcare can sometimes raise questions, and we're here to ensure you have all the information you need.</p>
-            </div>
-            <div class="space-y-4">
-                <div class="bg-white p-6 rounded-lg shadow-sm">
-                    <h4 class="font-bold text-slate-900">What should I bring to my first appointment?</h4>
-                    <p class="text-slate-500 mt-2 text-sm">Please bring your ID, insurance card, and any relevant medical records or current medications.</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-sm">
-                    <h4 class="font-bold text-slate-900">Do you offer emergency services?</h4>
-                    <p class="text-slate-500 mt-2 text-sm">Hospitalia provides urgent care, but for life-threatening emergencies, please dial 911 immediately.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="stories" class="py-24 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <span class="text-hospitalia-teal font-bold tracking-widest uppercase text-sm">Meet our patients</span>
-                <h2 class="text-4xl font-bold text-slate-900 mt-2 mb-4">Patient stories</h2>
-                <p class="text-slate-600">Read what our patients have to say about us</p>
-            </div>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="bg-slate-50 p-10 rounded-2xl border-l-4 border-hospitalia-teal">
-                    <p class="italic text-slate-700 text-lg mb-6">"The care I received at Hospitalia was truly life-changing. The doctors actually listen to you."</p>
-                    <div class="font-bold">— Sarah M., Cardiology Patient</div>
-                </div>
-                <div class="bg-slate-50 p-10 rounded-2xl border-l-4 border-hospitalia-teal">
-                    <p class="italic text-slate-700 text-lg mb-6">"Professional, clean, and extremely efficient. I felt safe and well-cared for from the moment I walked in."</p>
-                    <div class="font-bold">— David R., General Checkup</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="news" class="py-24 bg-slate-50">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <span class="text-hospitalia-teal font-bold tracking-widest uppercase text-sm">Latest news</span>
-                <h2 class="text-4xl font-bold text-slate-900 mt-2 mb-4">Stay informed about your health</h2>
-                <p class="text-slate-600">Read our informative blog posts to learn more about the health and the medical industry</p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white rounded-xl overflow-hidden shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1505751172107-573225a46320?auto=format&fit=crop&q=80&w=400" alt="Blog" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h4 class="font-bold text-lg mb-2">Modern Nutrition Trends</h4>
-                        <p class="text-slate-500 text-sm mb-4">Discover how modern science is changing how we eat...</p>
-                        <a href="#" class="text-hospitalia-teal font-bold text-sm">Read More →</a>
+                
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Dr. Amanda Rodriguez" class="member-img">
+                    <div class="member-info">
+                        <h3>Dr. Amanda Rodriguez</h3>
+                        <p class="member-specialty">Orthopedic Surgeon</p>
+                        <p>Dr. Rodriguez specializes in minimally invasive orthopedic procedures and rehabilitation.</p>
                     </div>
                 </div>
-                </div>
+            </div>
         </div>
     </section>
 
-    <footer id="contact" class="bg-slate-900 text-white py-20">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-3 gap-12 text-center md:text-left">
-                <div>
-                    <h3 class="text-2xl font-bold mb-6">Hospitalia</h3>
-                    <p class="text-slate-400">For any inquiries, please contact us to the mail below</p>
-                    <a href="mailto:hello@hospital1.com" class="text-hospitalia-teal font-semibold text-lg mt-2 block">hello@hospital1.com</a>
+    <!-- Resources Section -->
+    <section class="resources" id="resources">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Patient resources</span>
+                <h2 class="section-heading">See how it works</h2>
+                <p class="section-description">We provide resources to help you better understand your condition and make informed decisions.</p>
+            </div>
+            
+            <div class="resources-content">
+                <div class="resource-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Schedule Your Visit</h3>
+                            <p>Book an appointment online or call our clinic to find a convenient time for your consultation.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Consult with Specialists</h3>
+                            <p>Meet with our expert doctors who will listen to your concerns and perform necessary evaluations.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Receive Personalized Care</h3>
+                            <p>Get a tailored treatment plan designed specifically for your health needs and goals.</p>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <h4 class="font-bold text-xl mb-4 text-hospitalia-teal">Phone</h4>
-                    <p class="text-slate-400 mb-2">Call us during business hours for intermediate assistance</p>
-                    <p class="text-xl font-bold">+1 (555) 123 - 4567</p>
-                </div>
-                <div>
-                    <h4 class="font-bold text-xl mb-4 text-hospitalia-teal">Location</h4>
-                    <p class="text-slate-400 mb-2">Visit our clinic for a consultation or to schedule an appointment</p>
-                    <p class="font-bold italic">123 Main St, Anytown, USA</p>
+                
+                <div class="resource-image">
+                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Patient consultation" style="width:100%; border-radius:12px;">
                 </div>
             </div>
-            <div class="mt-20 pt-8 border-t border-slate-800 text-center text-slate-500 text-sm">
-                &copy; 2026 Hospitalia Medical Clinic. All rights reserved.
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">FAQs</span>
+                <h2 class="section-heading">Frequently asked questions</h2>
+                <p class="section-description">We understand that navigating healthcare can sometimes raise questions, and we're here to ensure you have all the information you need.</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How do I schedule an appointment?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can schedule an appointment by calling our office at +1 (555) 123-4567 during business hours or by using our online booking system available on our website.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What insurance plans do you accept?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We accept most major insurance plans including Blue Cross Blue Shield, Aetna, Cigna, UnitedHealthcare, and Medicare. Please contact our billing department for specific coverage details.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What should I bring to my first appointment?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Please bring your insurance card, photo ID, a list of current medications, and any relevant medical records or test results from previous providers.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you offer telemedicine appointments?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we offer telemedicine appointments for follow-up visits and certain types of consultations. Please call our office to determine if your visit type is eligible for telemedicine.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Meet our patients</span>
+                <h2 class="section-heading">Patient stories</h2>
+                <p class="section-description">Read what our patients have to say about us</p>
+            </div>
+            
+            <div class="testimonials-slider">
+                <div class="testimonials-container" id="testimonialsContainer">
+                    <div class="testimonial-card">
+                        <p class="patient-quote">"The care I received at Hospitalia was exceptional. Dr. Johnson took the time to explain everything thoroughly and made me feel comfortable throughout my treatment. My heart health has improved dramatically."</p>
+                        <div class="patient-info">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Robert Wilson" class="patient-avatar">
+                            <div>
+                                <p class="patient-name">Robert Wilson</p>
+                                <p>Cardiology Patient</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <p class="patient-quote">"After my knee surgery with Dr. Rodriguez, I'm back to hiking with my family. The entire team was supportive throughout my recovery process. I highly recommend Hospitalia for orthopedic care."</p>
+                        <div class="patient-info">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616c113a1c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w-400&q=80" alt="Jennifer Lee" class="patient-avatar">
+                            <div>
+                                <p class="patient-name">Jennifer Lee</p>
+                                <p>Orthopedics Patient</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <p class="patient-quote">"Dr. Chen's expertise in neurology helped diagnose a condition that had been affecting me for years. His compassionate approach and effective treatment plan have significantly improved my quality of life."</p>
+                        <div class="patient-info">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="David Martinez" class="patient-avatar">
+                            <div>
+                                <p class="patient-name">David Martinez</p>
+                                <p>Neurology Patient</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="slider-dots" id="sliderDots">
+                    <div class="dot active" data-slide="0"></div>
+                    <div class="dot" data-slide="1"></div>
+                    <div class="dot" data-slide="2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog" id="blog">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Latest news</span>
+                <h2 class="section-heading">Stay informed about your health</h2>
+                <p class="section-description">Read our informative blog posts to learn more about the health and the medical industry</p>
+            </div>
+            
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Heart Health" class="blog-img">
+                    <div class="blog-content">
+                        <p class="blog-date">June 15, 2023</p>
+                        <h3>5 Ways to Improve Your Heart Health</h3>
+                        <p>Learn simple lifestyle changes that can significantly reduce your risk of heart disease and improve cardiovascular health.</p>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Managing Stress" class="blog-img">
+                    <div class="blog-content">
+                        <p class="blog-date">May 28, 2023</p>
+                        <h3>The Link Between Stress and Physical Health</h3>
+                        <p>Understanding how chronic stress affects your body and effective strategies to manage stress for better overall health.</p>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Preventive Care" class="blog-img">
+                    <div class="blog-content">
+                        <p class="blog-date">April 12, 2023</p>
+                        <h3>Importance of Preventive Healthcare</h3>
+                        <p>Regular check-ups and screenings can detect health issues early when they're most treatable. Learn which screenings are right for you.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer & Contact Section -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-contact">
+                    <h3>Hospitalia Medical Clinic</h3>
+                    <p>For any inquiries, please contact us to the mail below</p>
+                    
+                    <div class="contact-item">
+                        <h4>Email</h4>
+                        <p><a href="mailto:hello@hospital1.com">hello@hospital1.com</a></p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <h4>Phone</h4>
+                        <p>Call us during business hours for intermediate assistance</p>
+                        <p><strong>+1 (555) 123 - 4567</strong></p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <h4>Location</h4>
+                        <p>Visit our clinic for a consultation or to schedule an appointment</p>
+                        <p><strong>123 Main St, Anytown, USA</strong></p>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#departments">Our Departments</a></li>
+                            <li><a href="#team">Medical Team</a></li>
+                            <li><a href="#resources">Patient Resources</a></li>
+                            <li><a href="#faq">FAQs</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="link-group">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="#departments">Cardiology</a></li>
+                            <li><a href="#departments">Neurology</a></li>
+                            <li><a href="#departments">Orthopedics</a></li>
+                            <li><a href="#departments">Primary Care</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="link-group">
+                        <h4>Patient Info</h4>
+                        <ul>
+                            <li><a href="#resources">How It Works</a></li>
+                            <li><a href="#faq">Insurance Info</a></li>
+                            <li><a href="#testimonials">Patient Stories</a></li>
+                            <li><a href="#blog">Health Blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Hospitalia Medical Clinic. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // FAQ Accordion
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const toggle = question.querySelector('.faq-toggle');
+                
+                // Close other open FAQ items
+                document.querySelectorAll('.faq-answer.active').forEach(activeAnswer => {
+                    if (activeAnswer !== answer) {
+                        activeAnswer.classList.remove('active');
+                        activeAnswer.previousElementSibling.querySelector('.faq-toggle').textContent = '+';
+                    }
+                });
+                
+                // Toggle current FAQ item
+                answer.classList.toggle('active');
+                toggle.textContent = answer.classList.contains('active') ? '−' : '+';
+            });
+        });
+        
+        // Testimonials Slider
+        const testimonialsContainer = document.getElementById('testimonialsContainer');
+        const dots = document.querySelectorAll('.dot');
+        let currentSlide = 0;
+        
+        // Initialize slider
+        function updateSlider() {
+            testimonialsContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Update dots
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+        
+        // Dot click events
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                currentSlide = parseInt(dot.getAttribute('data-slide'));
+                updateSlider();
+            });
+        });
+        
+        // Auto slide change every 5 seconds
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % dots.length;
+            updateSlider();
+        }, 5000);
+        
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+            }
+        });
+    </script>
 </body>
 </html>
